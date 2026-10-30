@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Garage Fredmir · Mécanique générale · Pierrefonds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0d1b2a; --navy-2:#13263a; --steel:#e9eef3; --paper:#f7f8fa; --ink:#0d1b2a;
+    --muted:#6b7a8c; --orange:#f26a1b; --line:rgba(255,255,255,.12); --line-d:#dde3ea;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  .display{font-family:Oswald,Impact,sans-serif;text-transform:uppercase;font-weight:700;letter-spacing:.01em;line-height:1.08}
+  body.lang-fr .en, body.lang-en .fr{display:none!important}
+
+  .preview{background:#ffd400;color:#111;font-size:13px;font-weight:600;text-align:center;padding:8px 16px}
+  .preview a{text-decoration:underline}
+  .alert{background:var(--orange);color:#fff;text-align:center;font-weight:600;font-size:14px;padding:10px 16px}
+  .alert a{text-decoration:underline}
+
+  header{position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo-mark{width:40px;height:40px;border:2px solid var(--orange);border-radius:50%;display:grid;place-items:center}
+  .logo-mark svg{width:22px;height:22px;stroke:var(--orange);fill:none;stroke-width:2}
+  .logo-text{font-family:Oswald,sans-serif;font-weight:700;font-size:21px;letter-spacing:.06em;text-transform:uppercase;line-height:1.05}
+  .logo-text small{display:block;font-family:Inter,sans-serif;font-size:10px;letter-spacing:.16em;color:#9fb0c3;font-weight:600}
+  .nav-links{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:500}
+  .nav-links a:not(.btn){color:#c8d3df}
+  .nav-links a:not(.btn):hover{color:#fff}
+  .lang-btn{background:none;border:1px solid var(--line);color:#fff;font:600 12px Inter,sans-serif;padding:7px 10px;cursor:pointer;letter-spacing:.06em;border-radius:4px}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;font-weight:700;font-size:15px;padding:14px 22px;border-radius:6px;border:0;cursor:pointer;transition:transform .15s,background .15s}
+  .btn:hover{transform:translateY(-2px);background:#e05c10}
+  .btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.6)}
+  .btn.dark{background:var(--navy)}
+  .btn.small{padding:10px 16px;font-size:14px}
+
+  .hero{background:var(--navy);color:#fff;padding:88px 0 100px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:520px;height:520px;border-radius:50%;border:70px solid rgba(242,106,27,.08)}
+  .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:20px}
+  .hero h1{font-size:clamp(46px,7vw,84px)}
+  .hero h1 .hl{color:var(--orange)}
+  .lead{font-size:19px;color:#c8d3df;max-width:540px;margin:24px 0 32px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+  .rating{display:flex;align-items:center;gap:12px;margin-top:34px;font-size:14px;color:#c8d3df}
+  .stars{color:#ffc53d;font-size:18px;letter-spacing:2px}
+  .rating strong{color:#fff;font-size:24px;font-family:Oswald,sans-serif}
+
+  .hours-card{background:#fff;color:var(--ink);border-radius:10px;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+  .hours-card h3{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:20px;letter-spacing:.04em;margin-bottom:6px}
+  .open-now{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#1a7f37;margin-bottom:16px}
+  .open-now .dot{width:8px;height:8px;border-radius:50%;background:#1a7f37}
+  .hours-card table{width:100%;border-collapse:collapse;font-size:15px}
+  .hours-card td{padding:8px 0;border-bottom:1px solid var(--line-d)}
+  .hours-card td:last-child{text-align:right;font-weight:600}
+  .hours-card tr.closed td:last-child{color:var(--muted);font-weight:500}
+  .hours-card .btn{width:100%;justify-content:center;margin-top:20px}
+
+  section{padding:92px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(36px,5vw,56px)}
+  .sec-head p{color:var(--muted);max-width:420px}
+  .kicker{color:var(--orange);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}
+
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .svc{background:#fff;border:1px solid var(--line-d);border-radius:10px;padding:28px;transition:transform .2s,box-shadow .2s}
+  .svc:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(13,27,42,.08)}
+  .svc .ic{width:48px;height:48px;border-radius:10px;background:rgba(242,106,27,.1);display:grid;place-items:center;margin-bottom:18px}
+  .svc .ic svg{width:24px;height:24px;stroke:var(--orange);fill:none;stroke-width:2}
+  .svc h3{font-size:19px;margin-bottom:8px}
+  .svc p{color:var(--muted);font-size:15px}
+
+  .why{background:var(--steel)}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .why-item h3{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:24px;margin:10px 0 8px}
+  .why-item p{color:#3d4b5c}
+  .why-item .n{font-family:Oswald,sans-serif;font-size:15px;color:var(--orange);letter-spacing:.1em}
+
+  .tires{background:var(--navy);color:#fff;border-radius:14px;padding:44px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+  .tires h3{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:34px;line-height:1.05}
+  .tires h3 span{color:var(--orange)}
+  .tires p{color:#c8d3df;margin-top:10px;max-width:560px}
+
+  .reviews-box{display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;background:#fff;border:1px solid var(--line-d);border-radius:14px;padding:40px}
+  .big-score{font-family:Oswald,sans-serif;font-size:96px;font-weight:700;line-height:.9;color:var(--navy)}
+  .reviews-box h3{font-family:Oswald,sans-serif;text-transform:uppercase;font-size:28px;margin-bottom:6px}
+  .reviews-box p{color:var(--muted)}
+
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .info-list{display:grid;gap:22px}
+  .info-item{display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:start}
+  .info-item .ic{width:46px;height:46px;border-radius:10px;background:var(--navy);display:grid;place-items:center}
+  .info-item .ic svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2}
+  .info-item .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .info-item .val{font-size:18px;font-weight:600}
+  .map{border-radius:12px;overflow:hidden;border:1px solid var(--line-d);min-height:360px}
+  .map iframe{width:100%;height:100%;min-height:360px;border:0;display:block}
+
+  footer{background:var(--navy);color:#9fb0c3;padding:28px 0;font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer a{color:#fff}
+
+  .callbar{display:none}
+  @media (max-width:900px){
+    .hero .wrap,.contact,.tires{grid-template-columns:1fr}
+    .services,.why-grid{grid-template-columns:1fr}
+    .reviews-box{grid-template-columns:1fr;gap:16px}
+    .nav-links a:not(.btn){display:none}
+    section{padding:68px 0}
+    .hero{padding:56px 0 72px}
+    .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:30}
+    .callbar a{flex:1;text-align:center;padding:16px;font-weight:700;font-size:15px;color:#fff}
+    .callbar a:first-child{background:var(--orange)}
+    .callbar a:last-child{background:var(--navy)}
+    body{padding-bottom:54px}
+  }
+</style>
+</head>
+<body class="lang-fr">
+
+<div class="preview">
+  <span class="fr">Aperçu préparé par <a href="https://coughlindigital.ca" target="_blank" rel="noopener">Coughlin Digital</a> · Ce site n'est pas encore en ligne</span>
+  <span class="en">Preview prepared by <a href="https://coughlindigital.ca" target="_blank" rel="noopener">Coughlin Digital</a> · This site is not live yet</span>
+</div>
+<div class="alert">
+  <span class="fr">Pneus d'hiver obligatoires dès le 1er décembre. <a href="tel:+15146260888">Appelez pour votre changement de pneus.</a></span>
+  <span class="en">Winter tires are mandatory from December 1. <a href="tel:+15146260888">Call to book your tire change.</a></span>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <div class="logo-text">Garage Fredmir<small><span class="fr">MÉCANIQUE GÉNÉRALE · PIERREFONDS</span><span class="en">AUTO REPAIR · PIERREFONDS</span></small></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#why"><span class="fr">Pourquoi nous</span><span class="en">Why us</span></a>
+      <a href="#contact"><span class="fr">Nous joindre</span><span class="en">Contact</span></a>
+      <button class="lang-btn" id="lang-toggle" aria-label="Changer de langue / Switch language"><span class="fr">EN</span><span class="en">FR</span></button>
+      <a href="tel:+15146260888" class="btn small">514-626-0888</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow"><span class="fr">Votre garage de quartier à Pierrefonds</span><span class="en">Your neighbourhood garage in Pierrefonds</span></div>
+        <h1 class="display">
+          <span class="fr">Du travail honnête.<br><span class="hl">Des prix justes.</span></span>
+          <span class="en">Honest work.<br><span class="hl">Fair prices.</span></span>
+        </h1>
+        <p class="lead">
+          <span class="fr">Entretien, réparations, freins et pneus pour toutes les marques. On vous explique le problème et le prix avant de commencer.</span>
+          <span class="en">Maintenance, repairs, brakes and tires for all makes. We explain the problem and the price before we start.</span>
+        </p>
+        <div class="cta-row">
+          <a href="tel:+15146260888" class="btn"><span class="fr">Appeler pour un rendez-vous</span><span class="en">Call to book</span></a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=13070+Boul.+de+Pierrefonds+Pierrefonds+QC+H9A+1A5" target="_blank" rel="noopener" class="btn ghost"><span class="fr">Itinéraire</span><span class="en">Directions</span></a>
+        </div>
+        <div class="rating">
+          <strong>4.7</strong><span class="stars">★★★★★</span>
+          <span><span class="fr">343 avis Google</span><span class="en">343 Google reviews</span></span>
+        </div>
+      </div>
+
+      <div class="hours-card">
+        <h3><span class="fr">Heures d'ouverture</span><span class="en">Opening hours</span></h3>
+        <div class="open-now" id="open-now"><span class="dot"></span><span id="open-text"></span></div>
+        <table>
+          <tr><td><span class="fr">Lundi</span><span class="en">Monday</span></td><td>8 h – 17 h</td></tr>
+          <tr><td><span class="fr">Mardi</span><span class="en">Tuesday</span></td><td>8 h – 17 h</td></tr>
+          <tr><td><span class="fr">Mercredi</span><span class="en">Wednesday</span></td><td>8 h – 17 h</td></tr>
+          <tr><td><span class="fr">Jeudi</span><span class="en">Thursday</span></td><td>8 h – 17 h</td></tr>
+          <tr><td><span class="fr">Vendredi</span><span class="en">Friday</span></td><td>8 h – 17 h</td></tr>
+          <tr class="closed"><td><span class="fr">Samedi et dimanche</span><span class="en">Saturday and Sunday</span></td><td><span class="fr">Fermé</span><span class="en">Closed</span></td></tr>
+        </table>
+        <a href="tel:+15146260888" class="btn dark">514-626-0888</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker"><span class="fr">Ce qu'on fait</span><span class="en">What we do</span></div>
+          <h2 class="display">Services</h2>
+        </div>
+        <p><span class="fr">Toutes marques, tous modèles. Laissez votre auto le matin, récupérez-la avant la fermeture.</span><span class="en">All makes and models. Drop your car off in the morning, pick it up before closing.</span></p>
+      </div>
+      <div class="services">
+        <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg></div><h3><span class="fr">Pneus et changements saisonniers</span><span class="en">Tires and seasonal changes</span></h3><p><span class="fr">Pose, balancement et réparation de crevaisons.</span><span class="en">Mounting, balancing and flat repairs.</span></p></div>
+        <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div><h3><span class="fr">Freins</span><span class="en">Brakes</span></h3><p><span class="fr">Plaquettes, disques et inspection complète.</span><span class="en">Pads, rotors and full inspection.</span></p></div>
+        <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 17h18M5 17V9l3-4h8l3 4v8"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/></svg></div><h3><span class="fr">Entretien régulier</span><span class="en">Regular maintenance</span></h3><p><span class="fr">Changements d'huile, filtres et mises au point.</span><span class="en">Oil changes, filters and tune-ups.</span></p></div>
+        <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="M8 20h8M12 16v4M7 10l3 2 4-4 3 3"/></svg></div><h3><span class="fr">Diagnostic</span><span class="en">Diagnostics</span></h3><p><span class="fr">Voyant allumé ou bruit inquiétant? On trouve la cause.</span><span class="en">Warning light or strange noise? We find the cause.</span></p></div>
+        <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12h4l2-6 4 12 2-6h4"/></svg></div><h3><span class="fr">Suspension et direction</span><span class="en">Suspension and steering</span></h3><p><span class="fr">Amortisseurs, rotules et pièces de direction.</span><span class="en">Shocks, ball joints and steering parts.</span></p></div>
+        <div class="svc"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3><span class="fr">Mécanique générale</span><span class="en">General repairs</span></h3><p><span class="fr">Le reste aussi. Appelez-nous, on vous dira franchement.</span><span class="en">Everything else too. Call us and we'll give you a straight answer.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker"><span class="fr">Pourquoi Fredmir</span><span class="en">Why Fredmir</span></div>
+          <h2 class="display"><span class="fr">Ce que nos clients disent</span><span class="en">What customers tell us</span></h2>
+        </div>
+      </div>
+      <div class="why-grid">
+        <div class="why-item"><div class="n">01</div><h3><span class="fr">Honnêteté</span><span class="en">Honesty</span></h3><p><span class="fr">On vous dit ce qui doit être réparé, et ce qui peut attendre.</span><span class="en">We tell you what needs fixing, and what can wait.</span></p></div>
+        <div class="why-item"><div class="n">02</div><h3><span class="fr">Prix justes</span><span class="en">Fair prices</span></h3><p><span class="fr">Le prix est confirmé avant le début des travaux.</span><span class="en">The price is confirmed before any work starts.</span></p></div>
+        <div class="why-item"><div class="n">03</div><h3><span class="fr">Rapidité</span><span class="en">Fast service</span></h3><p><span class="fr">La plupart des travaux sont faits dans la journée.</span><span class="en">Most jobs are done the same day.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-bottom:0">
+    <div class="wrap">
+      <div class="tires">
+        <div>
+          <h3><span class="fr">Pneus d'hiver: <span>1er décembre</span></span><span class="en">Winter tires: <span>December 1</span></span></h3>
+          <p><span class="fr">Au Québec, les pneus d'hiver sont obligatoires du 1er décembre au 15 mars. Prenez rendez-vous avant la course de dernière minute.</span><span class="en">In Quebec, winter tires are required from December 1 to March 15. Book before the last-minute rush.</span></p>
+        </div>
+        <a href="tel:+15146260888" class="btn"><span class="fr">Réserver mon changement</span><span class="en">Book my tire change</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="reviews-box">
+        <div class="big-score">4.7</div>
+        <div>
+          <div class="stars" style="font-size:22px;margin-bottom:8px">★★★★★</div>
+          <h3><span class="fr">343 avis de clients du West Island</span><span class="en">343 reviews from West Island drivers</span></h3>
+          <p><span class="fr">Honnête, rapide, prix raisonnables: c'est ce qui revient le plus souvent.</span><span class="en">Honest, fast, reasonable prices: that's what comes up most.</span></p>
+        </div>
+        <a class="btn dark" href="https://www.google.com/maps/search/?api=1&query=Garage+Fredmir+13070+Boul.+de+Pierrefonds" target="_blank" rel="noopener"><span class="fr">Lire les avis</span><span class="en">Read the reviews</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker"><span class="fr">Passez nous voir</span><span class="en">Come see us</span></div>
+          <h2 class="display"><span class="fr">Nous joindre</span><span class="en">Contact</span></h2>
+        </div>
+      </div>
+      <div class="contact">
+        <div class="info-list">
+          <a class="info-item" href="tel:+15146260888">
+            <div class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
+            <div><div class="lbl"><span class="fr">Téléphone</span><span class="en">Phone</span></div><div class="val">514-626-0888</div></div>
+          </a>
+          <a class="info-item" href="https://www.google.com/maps/dir/?api=1&destination=13070+Boul.+de+Pierrefonds+Pierrefonds+QC+H9A+1A5" target="_blank" rel="noopener">
+            <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="lbl"><span class="fr">Adresse</span><span class="en">Address</span></div><div class="val">13070, boul. de Pierrefonds<br>Pierrefonds, QC H9A 1A5</div></div>
+          </a>
+          <div class="info-item">
+            <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div><div class="lbl"><span class="fr">Heures</span><span class="en">Hours</span></div><div class="val"><span class="fr">Lundi au vendredi, 8 h à 17 h</span><span class="en">Monday to Friday, 8 a.m. to 5 p.m.</span></div></div>
+          </div>
+        </div>
+        <div class="map">
+          <iframe title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=13070+Boul.+de+Pierrefonds,+Pierrefonds,+QC+H9A+1A5&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Garage Fredmir · Pierrefonds, QC</span>
+    <span><span class="fr">Site conçu par</span><span class="en">Site by</span> <a href="https://coughlindigital.ca">Coughlin Digital</a></span>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a href="tel:+15146260888"><span class="fr">Appeler</span><span class="en">Call</span></a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=13070+Boul.+de+Pierrefonds+Pierrefonds+QC+H9A+1A5" target="_blank" rel="noopener"><span class="fr">Itinéraire</span><span class="en">Directions</span></a>
+</div>
+
+<script>
+  const body=document.body;
+  document.getElementById('lang-toggle').addEventListener('click',()=>{
+    const toEn=body.classList.contains('lang-fr');
+    body.classList.toggle('lang-fr',!toEn); body.classList.toggle('lang-en',toEn);
+    document.documentElement.lang=toEn?'en':'fr'; setOpen();
+  });
+  function setOpen(){
+    const now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Toronto'}));
+    const d=now.getDay(), h=now.getHours()+now.getMinutes()/60;
+    const open=d>=1&&d<=5&&h>=8&&h<17, en=body.classList.contains('lang-en');
+    const el=document.getElementById('open-now');
+    el.style.color=open?'#1a7f37':'#b42318'; el.querySelector('.dot').style.background=open?'#1a7f37':'#b42318';
+    document.getElementById('open-text').textContent=open?(en?'Open now, until 5 p.m.':'Ouvert maintenant, jusqu’à 17 h'):(en?'Closed now':'Fermé en ce moment');
+  }
+  setOpen();
+</script>
+</body>
+</html>
