@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Dany Grafix Lettrage & Enseignes · Dollard-des-Ormeaux</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#121212; --ink-2:#1d1d1d; --paper:#f5f3ee; --muted:#8a8780;
+    --red:#e2231a; --yellow:#ffd400; --line:rgba(255,255,255,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;background:var(--ink);color:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  .display{font-family:Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:.95}
+
+  /* language toggle */
+  body.lang-fr .en, body.lang-en .fr{display:none!important}
+
+  /* preview banner */
+  .preview{background:var(--yellow);color:var(--ink);font-size:13px;font-weight:600;text-align:center;padding:8px 16px}
+  .preview a{text-decoration:underline}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:20;background:rgba(18,18,18,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px}
+  .logo-mark{width:38px;height:38px;background:var(--red);display:grid;place-items:center;font-family:Anton,sans-serif;font-size:20px;transform:skewX(-8deg)}
+  .logo-text{font-family:Anton,sans-serif;font-size:20px;letter-spacing:.04em;text-transform:uppercase}
+  .logo-text small{display:block;font-family:Inter,sans-serif;font-size:10px;letter-spacing:.18em;color:var(--muted);font-weight:600}
+  .nav-links{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500}
+  .nav-links a:not(.btn){color:#cfccc5}
+  .nav-links a:not(.btn):hover{color:#fff}
+  .lang-btn{background:none;border:1px solid var(--line);color:var(--paper);font:600 12px Inter,sans-serif;padding:7px 10px;cursor:pointer;letter-spacing:.06em}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-weight:700;font-size:15px;padding:14px 22px;border:0;cursor:pointer;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.ghost{background:transparent;border:1.5px solid var(--paper)}
+  .btn.small{padding:10px 16px;font-size:14px}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;padding:96px 0 110px;border-bottom:1px solid var(--line)}
+  .hero::before{content:"";position:absolute;inset:0;background:
+     repeating-linear-gradient(-45deg,transparent 0 22px,rgba(255,212,0,.035) 22px 44px)}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:22px}
+  .eyebrow .dot{width:8px;height:8px;background:var(--yellow);border-radius:50%}
+  .hero h1{font-size:clamp(52px,8vw,104px)}
+  .hero h1 .hl{color:var(--red)}
+  .hero p.lead{font-size:19px;color:#cfccc5;max-width:540px;margin:26px 0 34px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+  .rating{display:flex;align-items:center;gap:14px;margin-top:38px;font-size:14px;color:#cfccc5}
+  .stars{color:var(--yellow);font-size:18px;letter-spacing:2px}
+  .rating strong{color:#fff;font-size:22px;font-family:Anton,sans-serif}
+
+  /* hero visual: a van with lettering */
+  .van-card{background:var(--ink-2);border:1px solid var(--line);padding:28px;position:relative}
+  .van-card .tag{position:absolute;top:-14px;left:24px;background:var(--yellow);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.14em;padding:5px 10px;text-transform:uppercase}
+  .van-card svg{width:100%;height:auto;display:block}
+
+  /* sections */
+  section{padding:96px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(40px,5.5vw,64px)}
+  .sec-head p{color:#a9a69f;max-width:420px}
+  .kicker{color:var(--red);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px}
+
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .svc{background:var(--ink);padding:34px 30px;transition:background .2s}
+  .svc:hover{background:var(--ink-2)}
+  .svc .num{font-family:Anton,sans-serif;color:var(--red);font-size:15px;letter-spacing:.08em}
+  .svc h3{font-family:Anton,sans-serif;font-size:28px;text-transform:uppercase;margin:14px 0 10px;letter-spacing:.01em}
+  .svc p{color:#a9a69f;font-size:15px}
+
+  /* why / process band */
+  .band{background:var(--paper);color:var(--ink)}
+  .band .sec-head p{color:#57544e}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .step{border-top:4px solid var(--ink);padding-top:22px}
+  .step .n{font-family:Anton,sans-serif;font-size:56px;color:var(--red);line-height:1}
+  .step h3{font-size:20px;margin:10px 0 8px}
+  .step p{color:#57544e;font-size:15px}
+
+  /* reviews */
+  .reviews-box{display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;border:1px solid var(--line);padding:44px;background:var(--ink-2)}
+  .big-score{font-family:Anton,sans-serif;font-size:110px;line-height:.85;color:var(--yellow)}
+  .reviews-box h3{font-family:Anton,sans-serif;text-transform:uppercase;font-size:32px;margin-bottom:8px}
+  .reviews-box p{color:#a9a69f}
+
+  /* contact */
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .info-list{display:grid;gap:22px;margin-top:8px}
+  .info-item{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+  .info-item .ic{width:44px;height:44px;background:var(--red);display:grid;place-items:center}
+  .info-item .ic svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2}
+  .info-item .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .info-item .val{font-size:18px;font-weight:600}
+  .map{border:1px solid var(--line);min-height:380px;filter:grayscale(.3) contrast(1.05)}
+  .map iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+  /* mobile call bar */
+  .callbar{display:none}
+  @media (max-width:900px){
+    .hero .wrap,.contact{grid-template-columns:1fr}
+    .services,.steps{grid-template-columns:1fr}
+    .reviews-box{grid-template-columns:1fr;text-align:left;gap:20px}
+    .nav-links a:not(.btn){display:none}
+    section{padding:72px 0}
+    .hero{padding:64px 0 80px}
+    .callbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:30}
+    .callbar a{flex:1;text-align:center;padding:16px;font-weight:700;font-size:15px}
+    .callbar a:first-child{background:var(--red)}
+    .callbar a:last-child{background:var(--ink-2);border-top:1px solid var(--line)}
+    body{padding-bottom:54px}
+  }
+</style>
+</head>
+<body class="lang-fr">
+
+<div class="preview">
+  <span class="fr">Aperçu préparé par <a href="https://coughlindigital.ca" target="_blank" rel="noopener">Coughlin Digital</a> · Ce site n'est pas encore en ligne</span>
+  <span class="en">Preview prepared by <a href="https://coughlindigital.ca" target="_blank" rel="noopener">Coughlin Digital</a> · This site is not live yet</span>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">
+      <div class="logo-mark">DG</div>
+      <div class="logo-text">Dany Grafix<small><span class="fr">LETTRAGE & ENSEIGNES</span><span class="en">LETTERING & SIGNS</span></small></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#services"><span class="fr">Services</span><span class="en">Services</span></a>
+      <a href="#process"><span class="fr">Comment ça marche</span><span class="en">How it works</span></a>
+      <a href="#contact"><span class="fr">Nous joindre</span><span class="en">Contact</span></a>
+      <button class="lang-btn" id="lang-toggle" aria-label="Changer de langue / Switch language"><span class="fr">EN</span><span class="en">FR</span></button>
+      <a href="tel:+15147026024" class="btn small"><span class="fr">Appeler</span><span class="en">Call now</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow"><span class="dot"></span><span class="fr">Dollard-des-Ormeaux · West Island</span><span class="en">Dollard-des-Ormeaux · West Island</span></div>
+        <h1 class="display">
+          <span class="fr">Votre nom.<br>En <span class="hl">grand.</span></span>
+          <span class="en">Your name.<br>Seen <span class="hl">everywhere.</span></span>
+        </h1>
+        <p class="lead">
+          <span class="fr">Lettrage de véhicules, enseignes, vitrines et décalques. Conçus, produits et posés ici, dans l'Ouest-de-l'Île.</span>
+          <span class="en">Vehicle lettering, signs, window graphics and decals. Designed, produced and installed right here in the West Island.</span>
+        </p>
+        <div class="cta-row">
+          <a href="tel:+15147026024" class="btn">(514) 702-6024</a>
+          <a href="#contact" class="btn ghost"><span class="fr">Demander une soumission</span><span class="en">Get a quote</span></a>
+        </div>
+        <div class="rating">
+          <strong>5.0</strong><span class="stars">★★★★★</span>
+          <span><span class="fr">54 avis Google</span><span class="en">54 Google reviews</span></span>
+        </div>
+      </div>
+
+      <div class="van-card" aria-hidden="true">
+        <span class="tag"><span class="fr">Lettrage de véhicule</span><span class="en">Vehicle lettering</span></span>
+        <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="420" height="240" fill="#1d1d1d"/>
+          <line x1="0" y1="206" x2="420" y2="206" stroke="#333" stroke-width="2"/>
+          <!-- van body -->
+          <path d="M30 70 h250 q18 0 30 14 l52 58 q8 9 8 21 v31 q0 10 -10 10 H30 q-10 0 -10 -10 V80 q0 -10 10 -10z" fill="#f5f3ee"/>
+          <path d="M292 86 l46 52 h-60 q-6 0 -6 -6 v-40 q0 -6 6 -6z" fill="#2b3a44"/>
+          <rect x="20" y="168" width="350" height="12" fill="#e2231a"/>
+          <rect x="20" y="182" width="350" height="5" fill="#ffd400"/>
+          <!-- lettering -->
+          <text x="44" y="118" font-family="Anton, Impact, sans-serif" font-size="34" fill="#121212">DANY GRAFIX</text>
+          <text x="46" y="142" font-family="Inter, sans-serif" font-weight="700" font-size="10" letter-spacing="1.5" fill="#e2231a">LETTRAGE · ENSEIGNES</text>
+          <text x="46" y="160" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="#121212">514-702-6024</text>
+          <!-- wheels -->
+          <circle cx="92" cy="200" r="24" fill="#121212"/><circle cx="92" cy="200" r="10" fill="#8a8780"/>
+          <circle cx="300" cy="200" r="24" fill="#121212"/><circle cx="300" cy="200" r="10" fill="#8a8780"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker"><span class="fr">Ce qu'on fait</span><span class="en">What we do</span></div>
+          <h2 class="display"><span class="fr">Services</span><span class="en">Services</span></h2>
+        </div>
+        <p><span class="fr">Du petit décalque au lettrage complet de flotte, chaque projet est fait sur mesure.</span><span class="en">From a single decal to a full fleet, every job is made to order.</span></p>
+      </div>
+      <div class="services">
+        <div class="svc"><div class="num">01</div><h3><span class="fr">Lettrage de véhicules</span><span class="en">Vehicle lettering</span></h3><p><span class="fr">Camions, fourgonnettes et remorques. Votre publicité roule avec vous partout.</span><span class="en">Trucks, vans and trailers. Your advertising goes everywhere you do.</span></p></div>
+        <div class="svc"><div class="num">02</div><h3><span class="fr">Enseignes</span><span class="en">Signs</span></h3><p><span class="fr">Enseignes extérieures et intérieures pour commerces et bureaux.</span><span class="en">Exterior and interior signage for storefronts and offices.</span></p></div>
+        <div class="svc"><div class="num">03</div><h3><span class="fr">Vitrines</span><span class="en">Window graphics</span></h3><p><span class="fr">Lettrage de vitrines, heures d'ouverture et vinyle givré.</span><span class="en">Storefront lettering, hours of operation and frosted vinyl.</span></p></div>
+        <div class="svc"><div class="num">04</div><h3><span class="fr">Décalques</span><span class="en">Decals</span></h3><p><span class="fr">Autocollants et décalques personnalisés, en petite ou grande quantité.</span><span class="en">Custom stickers and decals in any quantity.</span></p></div>
+        <div class="svc"><div class="num">05</div><h3><span class="fr">Bannières</span><span class="en">Banners</span></h3><p><span class="fr">Bannières pour événements, ouvertures et promotions.</span><span class="en">Banners for events, openings and promotions.</span></p></div>
+        <div class="svc"><div class="num">06</div><h3><span class="fr">Conception</span><span class="en">Design</span></h3><p><span class="fr">Pas encore de logo? On s'occupe du design avant la production.</span><span class="en">No logo yet? We handle the design before production.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker"><span class="fr">Simple et rapide</span><span class="en">Simple and fast</span></div>
+          <h2 class="display"><span class="fr">Comment ça marche</span><span class="en">How it works</span></h2>
+        </div>
+        <p><span class="fr">Un seul interlocuteur, du premier appel à la pose.</span><span class="en">One point of contact from the first call to installation.</span></p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><h3><span class="fr">Appelez ou passez nous voir</span><span class="en">Call or drop by</span></h3><p><span class="fr">Parlez-nous de votre projet, de vos dimensions et de votre budget.</span><span class="en">Tell us about your project, sizes and budget.</span></p></div>
+        <div class="step"><div class="n">2</div><h3><span class="fr">Approuvez l'épreuve</span><span class="en">Approve the proof</span></h3><p><span class="fr">On vous montre le design avant de produire quoi que ce soit.</span><span class="en">You see the design before anything gets made.</span></p></div>
+        <div class="step"><div class="n">3</div><h3><span class="fr">Production et pose</span><span class="en">Production and install</span></h3><p><span class="fr">Produit et installé avec soin. Prêt à être vu.</span><span class="en">Produced and installed with care. Ready to be seen.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="reviews-box">
+        <div class="big-score">5.0</div>
+        <div>
+          <div class="stars" style="font-size:22px;margin-bottom:10px">★★★★★</div>
+          <h3><span class="fr">54 avis. Que des 5 étoiles.</span><span class="en">54 reviews. All five stars.</span></h3>
+          <p><span class="fr">Nos clients du West Island en parlent mieux que nous.</span><span class="en">Our West Island customers say it better than we can.</span></p>
+        </div>
+        <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Dany+Grafix+Lettering+%26+Signs+1649+Sunnybrooke+Blvd+Dollard-des-Ormeaux" target="_blank" rel="noopener"><span class="fr">Lire les avis</span><span class="en">Read the reviews</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker"><span class="fr">Parlons de votre projet</span><span class="en">Let's talk about your project</span></div>
+          <h2 class="display"><span class="fr">Nous joindre</span><span class="en">Contact</span></h2>
+        </div>
+      </div>
+      <div class="contact">
+        <div class="info-list">
+          <a class="info-item" href="tel:+15147026024">
+            <div class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
+            <div><div class="lbl"><span class="fr">Téléphone</span><span class="en">Phone</span></div><div class="val">(514) 702-6024</div></div>
+          </a>
+          <a class="info-item" href="https://www.google.com/maps/dir/?api=1&destination=1649+Sunnybrooke+Blvd+Dollard-des-Ormeaux+QC+H9B+1R4" target="_blank" rel="noopener">
+            <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="lbl"><span class="fr">Adresse</span><span class="en">Address</span></div><div class="val">1649, boul. Sunnybrooke<br>Dollard-des-Ormeaux, QC H9B 1R4</div></div>
+          </a>
+          <div class="info-item">
+            <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div><div class="lbl"><span class="fr">Heures</span><span class="en">Hours</span></div><div class="val"><span class="fr">Ouvert jusqu'à 17 h</span><span class="en">Open until 5 p.m.</span></div></div>
+          </div>
+          <div style="margin-top:8px"><a href="tel:+15147026024" class="btn"><span class="fr">Appeler pour une soumission</span><span class="en">Call for a quote</span></a></div>
+        </div>
+        <div class="map">
+          <iframe title="Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=1649+Sunnybrooke+Blvd,+Dollard-des-Ormeaux,+QC+H9B+1R4&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Dany Grafix Lettering & Signs · Dollard-des-Ormeaux, QC</span>
+    <span><span class="fr">Site conçu par</span><span class="en">Site by</span> <a href="https://coughlindigital.ca" style="color:#cfccc5">Coughlin Digital</a></span>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a href="tel:+15147026024"><span class="fr">Appeler</span><span class="en">Call</span></a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=1649+Sunnybrooke+Blvd+Dollard-des-Ormeaux+QC+H9B+1R4" target="_blank" rel="noopener"><span class="fr">Itinéraire</span><span class="en">Directions</span></a>
+</div>
+
+<script>
+  const body=document.body, btn=document.getElementById('lang-toggle');
+  btn.addEventListener('click',()=>{
+    const toEn=body.classList.contains('lang-fr');
+    body.classList.toggle('lang-fr',!toEn); body.classList.toggle('lang-en',toEn);
+    document.documentElement.lang=toEn?'en':'fr';
+  });
+</script>
+</body>
+</html>
