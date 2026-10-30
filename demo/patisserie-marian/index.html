@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f6efe4">
+<title>Pâtisserie Marian · Pâtisserie égyptienne · Pierrefonds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero.jpg">
+<style>
+:root{
+  --bg:#f6efe4;--surface:#fffaf3;--text:#2a1d14;--muted:#7a6656;
+  --accent:#a8692a;--accent-ink:#ffffff;--line:rgba(42,29,20,.13);
+  --display:'Cormorant Garamond', Georgia, serif;--body:'Manrope', system-ui, sans-serif;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+body.lang-fr .en,body.lang-en .fr{display:none!important}
+.wrap{width:min(1200px,100% - 48px);margin-inline:auto}
+.display{font-family:var(--display);font-weight:600;letter-spacing:-0.01em;line-height:.98;}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:1px;background:currentColor}
+
+/* preview ribbon */
+.preview{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:60;background:rgba(15,15,15,.88);backdrop-filter:blur(10px);color:#fff;font-size:12px;font-weight:500;padding:8px 8px 8px 14px;border-radius:999px;display:flex;align-items:center;gap:10px;white-space:nowrap;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+.preview b{font-weight:700}
+.preview .qr-btn{background:#fff;color:#111;font-size:11px;font-weight:700;letter-spacing:.06em;padding:6px 10px;border-radius:999px}
+@media(min-width:901px){.preview{bottom:22px;left:auto;right:22px;transform:none}}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+.nav.scrolled{background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;transition:color .4s}
+.nav.scrolled .brand{color:var(--text)}
+.brand-mark{width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:0}
+.brand-name{font-family:var(--display);font-size:20px;font-weight:600;line-height:1;}
+.brand-name small{display:block;font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;opacity:.65;margin-top:5px}
+.nav-links{display:flex;align-items:center;gap:30px;font-size:14px;font-weight:500;color:rgba(255,255,255,.85);transition:color .4s}
+.nav.scrolled .nav-links{color:var(--muted)}
+.nav-links a:hover{color:var(--accent)}
+.lang{display:flex;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:3px;font-size:11px;font-weight:700;letter-spacing:.06em}
+.nav.scrolled .lang{border-color:var(--line)}
+.lang button{padding:6px 10px;border-radius:999px;color:inherit;opacity:.7}
+body.lang-fr .lang [data-l=fr],body.lang-en .lang [data-l=en]{background:var(--accent);color:var(--accent-ink);opacity:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:600;font-size:15px;padding:16px 26px;border-radius:999px;background:var(--accent);color:var(--accent-ink);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;will-change:transform}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px -10px color-mix(in srgb,var(--accent) 70%,transparent)}
+.btn svg{width:16px;height:16px;transition:transform .35s}
+.btn:hover svg{transform:translateX(4px)}
+.btn.ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px)}
+.btn.ghost:hover{box-shadow:none;background:rgba(255,255,255,.16)}
+.btn.small{padding:11px 18px;font-size:14px}
+.btn.line{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn.line:hover{border-color:var(--accent);color:var(--accent);box-shadow:none}
+
+/* hero */
+.hero{position:relative;min-height:100svh;padding:130px 0 0!important;overflow:hidden;color:#fff;display:flex;align-items:flex-end}
+.hero-media{position:absolute;inset:-6% 0 0 0;will-change:transform}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.05) 30%,rgba(0,0,0,.25) 55%,rgba(0,0,0,.82) 100%),linear-gradient(90deg,rgba(0,0,0,.55) 0%,transparent 60%)}
+.hero-content{position:relative;z-index:2;padding-bottom:clamp(48px,8vh,96px)}
+.hero h1{font-size:clamp(46px,7.4vw,108px);max-width:13ch;margin:20px 0 24px}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .line>span{display:inline-block}
+.hero h1 em{font-style:italic;color:#ffd9a0}
+.hero p.lead{font-size:clamp(17px,1.5vw,20px);max-width:46ch;color:rgba(255,255,255,.85);margin-bottom:34px}
+.hero .eyebrow{color:#fff}
+.hero-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:28px;margin-top:44px;padding-top:24px;border-top:1px solid rgba(255,255,255,.18);font-size:14px;color:rgba(255,255,255,.8)}
+.hero-meta strong{display:block;font-family:var(--display);font-size:30px;color:#fff;line-height:1;margin-bottom:4px;font-weight:600}
+.stars{color:#ffc53d;letter-spacing:2px}
+.scroll-cue{position:absolute;right:max(24px,calc((100vw - 1200px)/2));bottom:40px;z-index:2;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.7);writing-mode:vertical-rl;display:flex;align-items:center;gap:14px}
+.scroll-cue::after{content:"";width:1px;height:60px;background:linear-gradient(rgba(255,255,255,.8),transparent);animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding:22px 0;background:var(--surface)}
+.marquee-track{display:flex;gap:56px;width:max-content;animation:mq 38s linear infinite}
+.marquee span{font-family:var(--display);font-size:clamp(22px,2.6vw,34px);white-space:nowrap;display:flex;align-items:center;gap:56px;font-weight:600;}
+.marquee span::after{content:"✦";color:var(--accent);font-size:.6em}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:clamp(88px,12vw,150px) 0;position:relative}
+.sec-head{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end;margin-bottom:56px}
+.sec-head h2{font-size:clamp(40px,5.6vw,76px);margin-top:18px}
+.sec-head p{color:var(--muted);font-size:17px;max-width:44ch;justify-self:end}
+
+/* picker */
+.picker{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+.options{display:grid;gap:12px}
+.opt{display:flex;align-items:center;gap:18px;text-align:left;padding:20px 22px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);transition:border-color .3s,transform .3s,background .3s}
+.opt:hover{transform:translateX(6px);border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.opt .ic{flex:none;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);font-size:22px}
+.opt h3{font-size:17px;font-weight:600;margin-bottom:2px}
+.opt p{font-size:14px;color:var(--muted);line-height:1.45}
+.opt.active{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--surface))}
+.opt .chk{margin-left:auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line);flex:none;transition:.3s}
+.opt.active .chk{background:var(--accent);border-color:var(--accent);box-shadow:inset 0 0 0 4px var(--surface)}
+.panel{position:relative;border-radius:calc(var(--radius) + 6px);overflow:hidden;min-height:440px;color:#fff;display:flex;align-items:flex-end}
+.panel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .6s,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.85))}
+.panel-body{position:relative;z-index:2;padding:34px}
+.panel-body .tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;opacity:.8}
+.panel-body h3{font-family:var(--display);font-size:clamp(28px,3vw,40px);line-height:1.05;margin:10px 0 12px;font-weight:600;}
+.panel-body p{color:rgba(255,255,255,.82);margin-bottom:22px;max-width:40ch}
+.panel-body .hero-row .btn.ghost{padding:14px 20px}
+
+/* feature split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);align-items:start}
+.split-media{position:sticky;top:110px;border-radius:calc(var(--radius) + 6px);overflow:hidden;aspect-ratio:4/5}
+.split-media img{width:100%;height:118%;object-fit:cover}
+.split h2{font-size:clamp(40px,5vw,68px);margin:18px 0 22px}
+.split .intro{color:var(--muted);font-size:18px;margin-bottom:40px;max-width:46ch}
+.feat{display:grid;grid-template-columns:56px 1fr;gap:18px;padding:28px 0;border-top:1px solid var(--line)}
+.feat:last-child{border-bottom:1px solid var(--line)}
+.feat .n{font-family:var(--display);font-size:15px;color:var(--accent);padding-top:4px}
+.feat h3{font-size:21px;font-weight:600;margin-bottom:6px}
+.feat p{color:var(--muted)}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(150px,18vw,240px);gap:14px}
+.g{position:relative;overflow:hidden;border-radius:var(--radius);background:var(--surface)}
+.g img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.g:hover img{transform:scale(1.06)}
+.g figcaption{position:absolute;left:16px;bottom:14px;z-index:2;color:#fff;font-size:13px;font-weight:600;letter-spacing:.04em;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.g::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55))}
+.g1{grid-column:span 7;grid-row:span 2}.g2{grid-column:span 5}.g3{grid-column:span 5}.g4{grid-column:span 4}.g5{grid-column:span 4}.g6{grid-column:span 4}
+.n5 .g4,.n5 .g5{grid-column:span 6}
+
+/* reviews */
+.reviews{background:var(--surface);border-block:1px solid var(--line)}
+.rev-top{display:grid;grid-template-columns:auto 1fr auto;gap:48px;align-items:center}
+.score{font-family:var(--display);font-size:clamp(96px,14vw,180px);line-height:.85;color:var(--accent);font-weight:600}
+.rev-top h2{font-size:clamp(30px,3.6vw,46px);margin:12px 0 10px}
+.rev-top p{color:var(--muted);max-width:52ch}
+.themes{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.themes span{border:1px solid var(--line);padding:9px 16px;border-radius:999px;font-size:14px;font-weight:500}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.card{border:1px solid var(--line);border-radius:calc(var(--radius) + 6px);padding:clamp(28px,4vw,44px);background:var(--surface)}
+.card h3{font-family:var(--display);font-size:clamp(28px,3vw,38px);margin-bottom:22px;font-weight:600;}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;margin-bottom:20px;background:color-mix(in srgb,#1f9d55 14%,transparent);color:#1f9d55}
+.status.closed{background:color-mix(in srgb,#d14343 14%,transparent);color:#d14343}
+.status i{width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 0 currentColor;animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hours{width:100%;border-collapse:collapse;font-size:15px}
+.hours td{padding:11px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;font-weight:600}
+.hours tr.today td{color:var(--accent)}
+.contact-list{display:grid;gap:22px;margin-bottom:28px}
+.contact-list a,.contact-list div{display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:center}
+.contact-list .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.contact-list .ic svg{width:20px;height:20px}
+.contact-list small{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.contact-list strong{font-size:18px;font-weight:600}
+.cta-band{margin-top:28px;border-radius:calc(var(--radius) + 6px);overflow:hidden;position:relative;color:#fff;padding:clamp(40px,6vw,80px);display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.cta-band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cta-band::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.35));z-index:1}
+.cta-band>*{position:relative;z-index:2}
+.cta-band h2{font-size:clamp(34px,4.4vw,60px);max-width:16ch}
+
+footer{padding:40px 0 120px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer a{color:var(--text);font-weight:600}
+
+/* mobile bar */
+.mbar{display:none}
+
+/* qr modal */
+.qr-modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.82);backdrop-filter:blur(6px);display:none;place-items:center;padding:24px}
+.qr-modal.open{display:grid}
+.qr-card{background:#fff;color:#111;border-radius:22px;padding:28px;text-align:center;max-width:340px;width:100%}
+.qr-card img{width:100%;height:auto;image-rendering:pixelated;border-radius:8px}
+.qr-card p{font-size:14px;margin-top:14px;color:#444}
+.qr-card button{margin-top:16px;font-weight:700;font-size:14px;padding:10px 20px;border-radius:999px;background:#111;color:#fff}
+
+/* reveal states (JS adds) */
+.js [data-reveal]{opacity:0;transform:translateY(40px)}
+@media (prefers-reduced-motion:reduce){.js [data-reveal]{opacity:1!important;transform:none!important}.marquee-track{animation:none}}
+
+@media (max-width:900px){
+  .nav-links a{display:none}
+  .nav .wrap{height:66px}
+  .brand-name{font-size:17px}
+  .hero h1{margin:16px 0 18px}
+  .hero-meta{gap:22px;margin-top:30px}
+  .scroll-cue{display:none}
+  .hero-content{padding-bottom:118px}
+  .hero-meta>div:nth-child(3){display:none}
+  .marquee span{gap:28px}.marquee-track{gap:28px}
+  .n5 .g4{grid-column:span 1}.n5 .g5{grid-column:span 2}
+  .sec-head,.picker,.split,.visit,.rev-top{grid-template-columns:1fr}
+  .sec-head p{justify-self:start}
+  .split-media{position:relative;top:0;aspect-ratio:4/3}
+  .panel{min-height:380px}
+  .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
+  .g1{grid-column:span 2;grid-row:span 2}.g2,.g3,.g4,.g5{grid-column:span 1}.g6{grid-column:span 2}
+  .rev-top{gap:16px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:55;gap:8px}
+  .mbar a{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px;border-radius:999px;font-weight:700;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .mbar a:first-child{background:var(--accent);color:var(--accent-ink)}
+  .mbar a:last-child{background:#111;color:#fff}
+  .mbar svg{width:18px;height:18px}
+}
+</style>
+</head>
+<body class="lang-fr">
+<script>document.documentElement.classList.add('js')</script>
+
+<div class="preview" role="note">
+  <span><span class="fr">Aperçu par</span><span class="en">Preview by</span> <b>Coughlin Digital</b></span>
+  <button class="qr-btn" id="qr-open" type="button">QR</button>
+</div>
+<div class="qr-modal" id="qr-modal" role="dialog" aria-label="QR code">
+  <div class="qr-card">
+    <img src="qr.png" alt="QR code" width="300" height="300">
+    <p><span class="fr">Scannez pour ouvrir votre site sur votre téléphone</span><span class="en">Scan to open your site on your phone</span></p>
+    <button type="button" id="qr-close"><span class="fr">Fermer</span><span class="en">Close</span></button>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark">M</span>
+      <span class="brand-name">Pâtisserie Marian<small><span class="fr">Pâtisserie égyptienne</span><span class="en">Egyptian pastry shop</span></small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#choose"><span class="fr">Commander</span><span class="en">Order</span></a><a href="#gallery"><span class="fr">Nos douceurs</span><span class="en">Our sweets</span></a><a href="#visit"><span class="fr">Nous trouver</span><span class="en">Visit</span></a>
+      <div class="lang" role="group" aria-label="Langue / Language"><button data-l="fr" type="button">FR</button><button data-l="en" type="button">EN</button></div>
+      <a href="tel:+14388018026" class="btn small" style="color:var(--accent-ink)">438-801-8026</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-media" id="hero-media"><img src="img/hero.jpg" alt="" fetchpriority="high"></div>
+    <div class="wrap hero-content">
+      <div class="eyebrow" data-hero><span class="fr">Pâtisserie familiale · Pierrefonds</span><span class="en">Family pastry shop · Pierrefonds</span></div>
+      <h1 class="display">
+        <span class="fr"><span class="line"><span>Le goût</span></span><span class="line"><span>de l’<em>Égypte</em>,</span></span><span class="line"><span>à deux pas.</span></span></span>
+        <span class="en"><span class="line"><span>The taste</span></span><span class="line"><span>of <em>Egypt</em>,</span></span><span class="line"><span>around the corner.</span></span></span>
+      </h1>
+      <p class="lead" data-hero><span class="fr">Kunafa, basbousa et baklava faits avec soin, comme là-bas. Appelez d’avance pour réserver votre sélection.</span><span class="en">Kunafa, basbousa and baklava made with care, just like back home. Call ahead to reserve your selection.</span></p>
+      <div class="hero-row" data-hero>
+        <a href="#choose" class="btn"><span class="fr">Réserver ma sélection</span><span class="en">Reserve my selection</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="tel:+14388018026" class="btn ghost">438-801-8026</a>
+      </div>
+      <div class="hero-meta" data-hero>
+        <div><strong>5.0 <span class="stars" style="font-size:20px">★</span></strong>93 <span class="fr">avis Google</span><span class="en">Google reviews</span></div>
+        <div><strong><span class="fr">7 jours</span><span class="en">7 days</span></strong><span class="fr">ouvert toute la semaine</span><span class="en">open all week</span></div><div><strong><span class="fr">Familiale</span><span class="en">Family</span></strong><span class="fr">entreprise de quartier</span><span class="en">owned and run</span></div>
+      </div>
+    </div>
+    
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track">
+    <span><span class="fr">Kunafa</span><span class="en">Kunafa</span></span><span><span class="fr">Basbousa</span><span class="en">Basbousa</span></span><span><span class="fr">Baklava</span><span class="en">Baklava</span></span><span><span class="fr">Plateaux pour fêtes</span><span class="en">Party trays</span></span><span><span class="fr">Commandes par téléphone</span><span class="en">Phone orders</span></span><span><span class="fr">Kunafa</span><span class="en">Kunafa</span></span><span><span class="fr">Basbousa</span><span class="en">Basbousa</span></span><span><span class="fr">Baklava</span><span class="en">Baklava</span></span><span><span class="fr">Plateaux pour fêtes</span><span class="en">Party trays</span></span><span><span class="fr">Commandes par téléphone</span><span class="en">Phone orders</span></span>
+  </div></div>
+
+  <section id="choose">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow" data-reveal><span class="fr">Commander</span><span class="en">Order</span></div><h2 class="display" data-reveal><span class="fr">C’est pour quelle occasion?</span><span class="en">What’s the occasion?</span></h2></div>
+        <p data-reveal><span class="fr">Choisissez, puis envoyez-nous un texto. On prépare tout pour votre arrivée.</span><span class="en">Pick one, then send us a text. We’ll have it ready when you arrive.</span></p>
+      </div>
+      <div class="picker">
+        <div class="options" role="radiogroup">
+          
+          <button class="opt active" type="button" role="radio" aria-checked="true" data-i="0" data-reveal>
+            <span class="ic">🎉</span>
+            <span><h3><span class="fr">Une fête</span><span class="en">A party</span></h3><p><span class="fr">Anniversaire, mariage, Aïd</span><span class="en">Birthday, wedding, Eid</span></p></span>
+            <span class="chk"></span>
+          </button>
+          
+          <button class="opt" type="button" role="radio" aria-checked="false" data-i="1" data-reveal>
+            <span class="ic">🫖</span>
+            <span><h3><span class="fr">Une visite</span><span class="en">A visit</span></h3><p><span class="fr">Une boîte à offrir</span><span class="en">A box to bring along</span></p></span>
+            <span class="chk"></span>
+          </button>
+          
+          <button class="opt" type="button" role="radio" aria-checked="false" data-i="2" data-reveal>
+            <span class="ic">🍯</span>
+            <span><h3><span class="fr">Pour moi</span><span class="en">Just for me</span></h3><p><span class="fr">La sélection du jour</span><span class="en">Today’s selection</span></p></span>
+            <span class="chk"></span>
+          </button>
+          
+          <button class="opt" type="button" role="radio" aria-checked="false" data-i="3" data-reveal>
+            <span class="ic">✨</span>
+            <span><h3><span class="fr">Commande spéciale</span><span class="en">Special order</span></h3><p><span class="fr">Une grande kunafa, un format précis</span><span class="en">A large kunafa, a specific size</span></p></span>
+            <span class="chk"></span>
+          </button>
+          
+        </div>
+        <div class="panel" data-reveal>
+          <img src="img/p1.jpg" alt="" data-p="0" style="opacity:1" loading="lazy"><img src="img/p2.jpg" alt="" data-p="1" style="opacity:0" loading="lazy"><img src="img/p3.jpg" alt="" data-p="2" style="opacity:0" loading="lazy"><img src="img/p4.jpg" alt="" data-p="3" style="opacity:0" loading="lazy">
+          <div class="panel-body">
+            
+            <div data-pb="0">
+              <div class="tag"><span class="fr">Une fête</span><span class="en">A party</span></div>
+              <h3><span class="fr">Un plateau qui disparaît en un clin d’œil</span><span class="en">A tray that disappears in minutes</span></h3>
+              <p><span class="fr">Dites-nous le nombre d’invités et la date. On compose un assortiment sur mesure.</span><span class="en">Tell us how many guests and the date. We’ll put together a custom assortment.</span></p>
+              <div class="hero-row">
+                <a class="btn" href="sms:+14388018026?&body=Bonjour%2C%20j%E2%80%99aimerais%20commander%20un%20plateau%20pour%20une%20f%C3%AAte.%20Nombre%20d%E2%80%99invit%C3%A9s%3A%20__%20%20Date%3A%20__" data-sms-fr="Bonjour%2C%20j%E2%80%99aimerais%20commander%20un%20plateau%20pour%20une%20f%C3%AAte.%20Nombre%20d%E2%80%99invit%C3%A9s%3A%20__%20%20Date%3A%20__" data-sms-en="Hi%2C%20I%E2%80%99d%20like%20to%20order%20a%20party%20tray.%20Number%20of%20guests%3A%20__%20%20Date%3A%20__"><span class="fr">Envoyer un texto</span><span class="en">Send a text</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="btn ghost" href="tel:+14388018026"><span class="fr">Appeler</span><span class="en">Call</span></a>
+              </div>
+            </div>
+            
+            <div data-pb="1" hidden>
+              <div class="tag"><span class="fr">Une visite</span><span class="en">A visit</span></div>
+              <h3><span class="fr">Une boîte à offrir</span><span class="en">A box to bring along</span></h3>
+              <p><span class="fr">Le cadeau parfait quand on est reçu chez quelqu’un.</span><span class="en">The perfect gift when you’re visiting family or friends.</span></p>
+              <div class="hero-row">
+                <a class="btn" href="sms:+14388018026?&body=Bonjour%2C%20j%E2%80%99aimerais%20r%C3%A9server%20une%20bo%C3%AEte%20de%20p%C3%A2tisseries%20pour%20__%20%28date%29." data-sms-fr="Bonjour%2C%20j%E2%80%99aimerais%20r%C3%A9server%20une%20bo%C3%AEte%20de%20p%C3%A2tisseries%20pour%20__%20%28date%29." data-sms-en="Hi%2C%20I%E2%80%99d%20like%20to%20reserve%20a%20box%20of%20pastries%20for%20__%20%28date%29."><span class="fr">Envoyer un texto</span><span class="en">Send a text</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="btn ghost" href="tel:+14388018026"><span class="fr">Appeler</span><span class="en">Call</span></a>
+              </div>
+            </div>
+            
+            <div data-pb="2" hidden>
+              <div class="tag"><span class="fr">Pour moi</span><span class="en">Just for me</span></div>
+              <h3><span class="fr">Kunafa, basbousa, baklava</span><span class="en">Kunafa, basbousa, baklava</span></h3>
+              <p><span class="fr">Passez nous voir. Il y a souvent quelque chose de nouveau à goûter.</span><span class="en">Drop by. There’s often something new to try.</span></p>
+              <div class="hero-row">
+                <a class="btn" href="sms:+14388018026?&body=Bonjour%2C%20qu%E2%80%99avez-vous%20aujourd%E2%80%99hui%3F%20J%E2%80%99aimerais%20passer%20vers%20__%20h." data-sms-fr="Bonjour%2C%20qu%E2%80%99avez-vous%20aujourd%E2%80%99hui%3F%20J%E2%80%99aimerais%20passer%20vers%20__%20h." data-sms-en="Hi%2C%20what%20do%20you%20have%20today%3F%20I%E2%80%99d%20like%20to%20stop%20by%20around%20__."><span class="fr">Envoyer un texto</span><span class="en">Send a text</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="btn ghost" href="tel:+14388018026"><span class="fr">Appeler</span><span class="en">Call</span></a>
+              </div>
+            </div>
+            
+            <div data-pb="3" hidden>
+              <div class="tag"><span class="fr">Commande spéciale</span><span class="en">Special order</span></div>
+              <h3><span class="fr">Une demande précise?</span><span class="en">Something specific in mind?</span></h3>
+              <p><span class="fr">Écrivez-nous ce que vous cherchez. On vous répond avec ce qui est possible.</span><span class="en">Tell us what you’re looking for and we’ll tell you what we can do.</span></p>
+              <div class="hero-row">
+                <a class="btn" href="sms:+14388018026?&body=Bonjour%2C%20j%E2%80%99ai%20une%20commande%20sp%C3%A9ciale%3A%20__" data-sms-fr="Bonjour%2C%20j%E2%80%99ai%20une%20commande%20sp%C3%A9ciale%3A%20__" data-sms-en="Hi%2C%20I%20have%20a%20special%20order%3A%20__"><span class="fr">Envoyer un texto</span><span class="en">Send a text</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                <a class="btn ghost" href="tel:+14388018026"><span class="fr">Appeler</span><span class="en">Call</span></a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="padding-top:0">
+    <div class="wrap split">
+      <div class="split-media" data-reveal><img src="img/split.jpg" alt="" loading="lazy" data-parallax></div>
+      <div>
+        <div class="eyebrow" data-reveal><span class="fr">Notre maison</span><span class="en">Our house</span></div>
+        <h2 class="display" data-reveal><span class="fr">Fait avec soin, comme là-bas.</span><span class="en">Made with care, like back home.</span></h2>
+        <p class="intro" data-reveal><span class="fr">Une pâtisserie familiale où chaque bouchée goûte l’Égypte. Nos clients le disent mieux que nous.</span><span class="en">A family pastry shop where every bite tastes like Egypt. Our customers say it best.</span></p>
+        
+        <div class="feat" data-reveal><div class="n">01</div><div><h3><span class="fr">Le vrai goût égyptien</span><span class="en">Real Egyptian flavour</span></h3><p><span class="fr">Des recettes traditionnelles, des pâtisseries fraîches.</span><span class="en">Traditional recipes, fresh pastries.</span></p></div></div>
+        
+        <div class="feat" data-reveal><div class="n">02</div><div><h3><span class="fr">Une sélection sur mesure</span><span class="en">A selection made for you</span></h3><p><span class="fr">On compose votre boîte selon vos goûts.</span><span class="en">We put your box together the way you like it.</span></p></div></div>
+        
+        <div class="feat" data-reveal><div class="n">03</div><div><h3><span class="fr">Des prix raisonnables</span><span class="en">Reasonable prices</span></h3><p><span class="fr">Pour se faire plaisir sans y penser deux fois.</span><span class="en">A treat you don’t have to think twice about.</span></p></div></div>
+        
+        <div class="feat" data-reveal><div class="n">04</div><div><h3><span class="fr">Stationnement gratuit</span><span class="en">Free parking</span></h3><p><span class="fr">Juste devant, dans le centre commercial.</span><span class="en">Right out front, in the strip mall.</span></p></div></div>
+        
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="gallery" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow" data-reveal><span class="fr">Nos douceurs</span><span class="en">Our sweets</span></div><h2 class="display" data-reveal><span class="fr">À commander, à offrir, à savourer.</span><span class="en">To order, to share, to savour.</span></h2></div>
+        <p data-reveal><span class="fr">Photos d’exemple. Vos vraies photos les remplaceront.</span><span class="en">Sample photos. Your real photos will replace them.</span></p>
+      </div>
+      <div class="gallery n5">
+        <figure class="g g1" data-reveal><img src="img/g1.jpg" alt="" loading="lazy"><figcaption><span class="fr">Baklava</span><span class="en">Baklava</span></figcaption></figure><figure class="g g2" data-reveal><img src="img/g2.jpg" alt="" loading="lazy"><figcaption><span class="fr">Kunafa</span><span class="en">Kunafa</span></figcaption></figure><figure class="g g3" data-reveal><img src="img/g3.jpg" alt="" loading="lazy"><figcaption><span class="fr">Assortiment</span><span class="en">Assortment</span></figcaption></figure><figure class="g g4" data-reveal><img src="img/g4.jpg" alt="" loading="lazy"><figcaption><span class="fr">Avec le thé</span><span class="en">With tea</span></figcaption></figure><figure class="g g5" data-reveal><img src="img/g5.jpg" alt="" loading="lazy"><figcaption><span class="fr">Kunafa ronde</span><span class="en">Round kunafa</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="reviews">
+    <div class="wrap">
+      <div class="rev-top">
+        <div class="score" data-count="5.0">5.0</div>
+        <div>
+          <div class="stars" style="font-size:22px">★★★★★</div>
+          <h2 class="display"><span class="fr">93 avis. Que des 5 étoiles.</span><span class="en">93 reviews. All five stars.</span></h2>
+          <p><span class="fr">Ce qui revient le plus souvent dans les avis de nos clients:</span><span class="en">What comes up most in our customers’ reviews:</span></p>
+          <div class="themes"><span><span class="fr">Authentique</span><span class="en">Authentic</span></span><span><span class="fr">Toujours frais</span><span class="en">Always fresh</span></span><span><span class="fr">Accueil chaleureux</span><span class="en">Warm welcome</span></span><span><span class="fr">Prix raisonnables</span><span class="en">Reasonable prices</span></span></div>
+        </div>
+        <a class="btn line" href="https://www.google.com/maps/search/?api=1&query=P%C3%A2tisserie%20Marian%204871%20Boulevard%20Saint-Charles" target="_blank" rel="noopener"><span class="fr">Lire les avis</span><span class="en">Read the reviews</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow" data-reveal><span class="fr">Nous trouver</span><span class="en">Find us</span></div><h2 class="display" data-reveal><span class="fr">Passez nous voir.</span><span class="en">Come say hello.</span></h2></div>
+      </div>
+      <div class="visit">
+        <div class="card" data-reveal>
+          <h3><span class="fr">Heures</span><span class="en">Hours</span></h3>
+          <div class="status" id="status"><i></i><span id="status-text"></span></div>
+          <table class="hours" id="hours">
+            <tr data-d="1,2,3,4,5"><td><span class="fr">Lundi au vendredi</span><span class="en">Monday to Friday</span></td><td><span class="fr">10 h à 19 h</span><span class="en">10 a.m. to 7 p.m.</span></td></tr><tr data-d="6,0"><td><span class="fr">Samedi au dimanche</span><span class="en">Saturday to Sunday</span></td><td><span class="fr">10 h à 18 h</span><span class="en">10 a.m. to 6 p.m.</span></td></tr>
+          </table>
+        </div>
+        <div class="card" data-reveal>
+          <h3><span class="fr">Contact</span><span class="en">Contact</span></h3>
+          <div class="contact-list">
+            <a href="tel:+14388018026"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><span><small><span class="fr">Téléphone</span><span class="en">Phone</span></small><strong>438-801-8026</strong></span></a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=4871%20Boulevard%20Saint-Charles%2C%20Pierrefonds%2C%20QC%20H9H%203E4" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><small><span class="fr">Adresse</span><span class="en">Address</span></small><strong>4871, boul. Saint-Charles<br>Pierrefonds, QC H9H 3E4</strong></span></a>
+          </div>
+          <a class="btn line" href="https://www.google.com/maps/dir/?api=1&destination=4871%20Boulevard%20Saint-Charles%2C%20Pierrefonds%2C%20QC%20H9H%203E4" target="_blank" rel="noopener"><span class="fr">Itinéraire</span><span class="en">Get directions</span></a>
+        </div>
+      </div>
+      <div class="cta-band" data-reveal>
+        <img src="img/cta.jpg" alt="" loading="lazy">
+        <h2 class="display"><span class="fr">Une fête qui s’en vient?</span><span class="en">Party coming up?</span></h2>
+        <a href="tel:+14388018026" class="btn"><span class="fr">Appeler pour commander</span><span class="en">Call to order</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© Pâtisserie Marian · Pierrefonds, QC</span><span><span class="fr">Site conçu par</span><span class="en">Site by</span> <a href="https://coughlindigital.ca">Coughlin Digital</a></span></div></footer>
+
+<div class="mbar">
+  <a href="tel:+14388018026"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="fr">Appeler</span><span class="en">Call</span></a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=4871%20Boulevard%20Saint-Charles%2C%20Pierrefonds%2C%20QC%20H9H%203E4" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="fr">Itinéraire</span><span class="en">Directions</span></a>
+</div>
+
+<script src="../_lib/gsap.min.js"></script>
+<script src="../_lib/ScrollTrigger.min.js"></script>
+<script src="../_lib/lenis.min.js"></script>
+<script>
+(function(){
+  const body=document.body, HOURS=[[600, 1080], [600, 1140], [600, 1140], [600, 1140], [600, 1140], [600, 1140], [600, 1080]];
+  const L=()=>body.classList.contains('lang-en')?'en':'fr';
+  // language
+  function setLang(l){body.classList.toggle('lang-en',l==='en');body.classList.toggle('lang-fr',l!=='en');document.documentElement.lang=l;status();sms();if(window.ScrollTrigger)ScrollTrigger.refresh();}
+  document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+  // nav state
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>40);onScroll();addEventListener('scroll',onScroll,{passive:true});
+  // open status (Montreal time)
+  function status(){
+    const now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Toronto'}));
+    const d=now.getDay(), m=now.getHours()*60+now.getMinutes(), h=HOURS[d];
+    const open=h&&(h[0]===0&&h[1]===1440||m>=h[0]&&m<h[1]);
+    const el=document.getElementById('status');el.classList.toggle('closed',!open);
+    const fmt=x=>{const H=Math.floor(x/60),M=x%60;return L()==='fr'?`${H} h${M?String(M).padStart(2,'0'):''}`:`${(H%12)||12}${M?':'+String(M).padStart(2,'0'):''} ${H<12?'a.m.':'p.m.'}`};
+    let txt;
+    if(h&&h[0]===0&&h[1]===1440) txt=L()==='fr'?'Ouvert 24 h sur 24':'Open 24 hours';
+    else if(open) txt=(L()==='fr'?'Ouvert maintenant · jusqu’à ':'Open now · until ')+fmt(h[1]);
+    else txt=L()==='fr'?'Fermé en ce moment':'Closed right now';
+    document.getElementById('status-text').textContent=txt;
+    document.querySelectorAll('#hours tr').forEach(tr=>tr.classList.toggle('today',tr.dataset.d.split(',').includes(String(d))));
+  }
+  status();
+  // picker
+  const opts=[...document.querySelectorAll('.opt')];
+  function pick(i){
+    opts.forEach((o,j)=>{o.classList.toggle('active',i===j);o.setAttribute('aria-checked',i===j)});
+    document.querySelectorAll('[data-p]').forEach(im=>{const on=+im.dataset.p===i;im.style.opacity=on?1:0;im.style.transform=on?'scale(1)':'scale(1.06)'});
+    document.querySelectorAll('[data-pb]').forEach(pb=>pb.hidden=+pb.dataset.pb!==i);
+  }
+  opts.forEach((o,i)=>o.addEventListener('click',()=>pick(i)));
+  function sms(){document.querySelectorAll('[data-sms-fr]').forEach(a=>a.href=`sms:+14388018026?&body=${a.dataset['sms'+(L()==='fr'?'Fr':'En')]}`)}
+  // QR
+  const qm=document.getElementById('qr-modal');
+  document.getElementById('qr-open').onclick=()=>qm.classList.add('open');
+  document.getElementById('qr-close').onclick=()=>qm.classList.remove('open');
+  qm.addEventListener('click',e=>{if(e.target===qm)qm.classList.remove('open')});
+
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!window.gsap){document.querySelectorAll('[data-reveal]').forEach(e=>{e.style.opacity=1;e.style.transform='none'});return;}
+  gsap.registerPlugin(ScrollTrigger);
+  // smooth scroll
+  if(window.Lenis){const lenis=new Lenis({duration:1.15,smoothWheel:true});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');if(id.length>1){e.preventDefault();lenis.scrollTo(id,{offset:-70})}}));}
+  // hero intro
+  gsap.from('.hero-media img',{scale:1.18,duration:2.2,ease:'power3.out'});
+  gsap.from('.hero h1 .line>span',{yPercent:110,duration:1.1,ease:'power4.out',stagger:.09,delay:.15});
+  gsap.from('[data-hero]',{y:24,opacity:0,duration:1,ease:'power3.out',stagger:.08,delay:.45});
+  // hero parallax
+  gsap.to('#hero-media',{yPercent:14,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.hero-content',{y:-80,opacity:.15,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  // reveals
+  ScrollTrigger.batch('[data-reveal]',{start:'top 88%',once:true,onEnter:els=>gsap.to(els,{opacity:1,y:0,duration:1,ease:'power3.out',stagger:.09})});
+  // parallax images
+  document.querySelectorAll('[data-parallax]').forEach(img=>gsap.fromTo(img,{yPercent:-8},{yPercent:0,ease:'none',scrollTrigger:{trigger:img.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
+  // count-up
+  document.querySelectorAll('[data-count]').forEach(el=>{const v=parseFloat(el.dataset.count),o={x:0};ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>gsap.to(o,{x:v,duration:1.6,ease:'power2.out',onUpdate:()=>el.textContent=o.x.toFixed(1)})})});
+})();
+</script>
+</body>
+</html>
