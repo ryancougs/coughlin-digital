@@ -63,6 +63,20 @@
   .van-card .tag{position:absolute;top:-14px;left:24px;background:var(--yellow);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.14em;padding:5px 10px;text-transform:uppercase}
   .van-card svg{width:100%;height:auto;display:block}
 
+
+  .hero-photo{position:relative;margin:0;border:1px solid var(--line);background:var(--ink-2);padding:10px}
+  .hero-photo img{display:block;width:100%;height:auto}
+  .hero-photo .tag{position:absolute;top:-14px;left:24px;z-index:2;background:var(--yellow);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.14em;padding:5px 10px;text-transform:uppercase}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .gallery figure{margin:0;position:relative;overflow:hidden;background:var(--ink-2);aspect-ratio:4/3}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+  .gallery figure:hover img{transform:scale(1.05)}
+  .gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 16px 12px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:linear-gradient(transparent,rgba(0,0,0,.75))}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  @media (max-width:900px){.gallery{grid-template-columns:1fr 1fr;gap:10px}}
+
   /* sections */
   section{padding:96px 0}
   .sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
@@ -138,6 +152,7 @@
     </a>
     <nav class="nav-links">
       <a href="#services"><span class="fr">Services</span><span class="en">Services</span></a>
+      <a href="#work"><span class="fr">Réalisations</span><span class="en">Our work</span></a>
       <a href="#process"><span class="fr">Comment ça marche</span><span class="en">How it works</span></a>
       <a href="#contact"><span class="fr">Nous joindre</span><span class="en">Contact</span></a>
       <button class="lang-btn" id="lang-toggle" aria-label="Changer de langue / Switch language"><span class="fr">EN</span><span class="en">FR</span></button>
@@ -169,25 +184,10 @@
         </div>
       </div>
 
-      <div class="van-card" aria-hidden="true">
-        <span class="tag"><span class="fr">Lettrage de véhicule</span><span class="en">Vehicle lettering</span></span>
-        <svg viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="0" width="420" height="240" fill="#1d1d1d"/>
-          <line x1="0" y1="206" x2="420" y2="206" stroke="#333" stroke-width="2"/>
-          <!-- van body -->
-          <path d="M30 70 h250 q18 0 30 14 l52 58 q8 9 8 21 v31 q0 10 -10 10 H30 q-10 0 -10 -10 V80 q0 -10 10 -10z" fill="#f5f3ee"/>
-          <path d="M292 86 l46 52 h-60 q-6 0 -6 -6 v-40 q0 -6 6 -6z" fill="#2b3a44"/>
-          <rect x="20" y="168" width="350" height="12" fill="#e2231a"/>
-          <rect x="20" y="182" width="350" height="5" fill="#ffd400"/>
-          <!-- lettering -->
-          <text x="44" y="118" font-family="Anton, Impact, sans-serif" font-size="34" fill="#121212">DANY GRAFIX</text>
-          <text x="46" y="142" font-family="Inter, sans-serif" font-weight="700" font-size="10" letter-spacing="1.5" fill="#e2231a">LETTRAGE · ENSEIGNES</text>
-          <text x="46" y="160" font-family="Inter, sans-serif" font-weight="600" font-size="12" fill="#121212">514-702-6024</text>
-          <!-- wheels -->
-          <circle cx="92" cy="200" r="24" fill="#121212"/><circle cx="92" cy="200" r="10" fill="#8a8780"/>
-          <circle cx="300" cy="200" r="24" fill="#121212"/><circle cx="300" cy="200" r="10" fill="#8a8780"/>
-        </svg>
-      </div>
+      <figure class="hero-photo reveal">
+        <span class="tag"><span class="fr">Lettrage de vitrine</span><span class="en">Window lettering</span></span>
+        <img src="img/window-sortie.jpg" alt="Lettrage SORTIE et SERVICE sur une porte vitrée de concessionnaire" width="1246" height="879">
+      </figure>
     </div>
   </section>
 
@@ -201,12 +201,33 @@
         <p><span class="fr">Du petit décalque au lettrage complet de flotte, chaque projet est fait sur mesure.</span><span class="en">From a single decal to a full fleet, every job is made to order.</span></p>
       </div>
       <div class="services">
-        <div class="svc"><div class="num">01</div><h3><span class="fr">Lettrage de véhicules</span><span class="en">Vehicle lettering</span></h3><p><span class="fr">Camions, fourgonnettes et remorques. Votre publicité roule avec vous partout.</span><span class="en">Trucks, vans and trailers. Your advertising goes everywhere you do.</span></p></div>
-        <div class="svc"><div class="num">02</div><h3><span class="fr">Enseignes</span><span class="en">Signs</span></h3><p><span class="fr">Enseignes extérieures et intérieures pour commerces et bureaux.</span><span class="en">Exterior and interior signage for storefronts and offices.</span></p></div>
-        <div class="svc"><div class="num">03</div><h3><span class="fr">Vitrines</span><span class="en">Window graphics</span></h3><p><span class="fr">Lettrage de vitrines, heures d'ouverture et vinyle givré.</span><span class="en">Storefront lettering, hours of operation and frosted vinyl.</span></p></div>
-        <div class="svc"><div class="num">04</div><h3><span class="fr">Décalques</span><span class="en">Decals</span></h3><p><span class="fr">Autocollants et décalques personnalisés, en petite ou grande quantité.</span><span class="en">Custom stickers and decals in any quantity.</span></p></div>
-        <div class="svc"><div class="num">05</div><h3><span class="fr">Bannières</span><span class="en">Banners</span></h3><p><span class="fr">Bannières pour événements, ouvertures et promotions.</span><span class="en">Banners for events, openings and promotions.</span></p></div>
-        <div class="svc"><div class="num">06</div><h3><span class="fr">Conception</span><span class="en">Design</span></h3><p><span class="fr">Pas encore de logo? On s'occupe du design avant la production.</span><span class="en">No logo yet? We handle the design before production.</span></p></div>
+        <div class="svc reveal"><div class="num">01</div><h3><span class="fr">Lettrage de véhicules</span><span class="en">Vehicle lettering</span></h3><p><span class="fr">Camions, fourgonnettes et remorques. Votre publicité roule avec vous partout.</span><span class="en">Trucks, vans and trailers. Your advertising goes everywhere you do.</span></p></div>
+        <div class="svc reveal"><div class="num">02</div><h3><span class="fr">Enseignes</span><span class="en">Signs</span></h3><p><span class="fr">Enseignes extérieures et intérieures pour commerces et bureaux.</span><span class="en">Exterior and interior signage for storefronts and offices.</span></p></div>
+        <div class="svc reveal"><div class="num">03</div><h3><span class="fr">Vitrines</span><span class="en">Window graphics</span></h3><p><span class="fr">Lettrage de vitrines, heures d'ouverture et vinyle givré.</span><span class="en">Storefront lettering, hours of operation and frosted vinyl.</span></p></div>
+        <div class="svc reveal"><div class="num">04</div><h3><span class="fr">Décalques</span><span class="en">Decals</span></h3><p><span class="fr">Autocollants et décalques personnalisés, en petite ou grande quantité.</span><span class="en">Custom stickers and decals in any quantity.</span></p></div>
+        <div class="svc reveal"><div class="num">05</div><h3><span class="fr">Bannières</span><span class="en">Banners</span></h3><p><span class="fr">Bannières pour événements, ouvertures et promotions.</span><span class="en">Banners for events, openings and promotions.</span></p></div>
+        <div class="svc reveal"><div class="num">06</div><h3><span class="fr">Conception</span><span class="en">Design</span></h3><p><span class="fr">Pas encore de logo? On s'occupe du design avant la production.</span><span class="en">No logo yet? We handle the design before production.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="work" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="kicker"><span class="fr">Nos réalisations</span><span class="en">Our work</span></div>
+          <h2 class="display"><span class="fr">Sur la route</span><span class="en">On the road</span></h2>
+        </div>
+        <p><span class="fr">Concessionnaires, entrepreneurs et commerces de l'Ouest-de-l'Île nous confient leur image.</span><span class="en">West Island dealerships, contractors and shops trust us with their image.</span></p>
+      </div>
+      <div class="gallery">
+        <figure class="reveal"><img src="img/rabais-5000.jpg" alt="" loading="lazy"><figcaption><span class="fr">Promotion concessionnaire</span><span class="en">Dealership promo</span></figcaption></figure>
+        <figure class="reveal"><img src="img/courtoisie.jpg" alt="" loading="lazy"><figcaption><span class="fr">Véhicule de courtoisie</span><span class="en">Courtesy vehicle</span></figcaption></figure>
+        <figure class="reveal"><img src="img/toute-nouvelle.jpg" alt="" loading="lazy"><figcaption><span class="fr">Lancement de modèle</span><span class="en">Model launch</span></figcaption></figure>
+        <figure class="reveal"><img src="img/navette.jpg" alt="" loading="lazy"><figcaption><span class="fr">Service de navette</span><span class="en">Shuttle service</span></figcaption></figure>
+        <figure class="reveal"><img src="img/rabais-1800.jpg" alt="" loading="lazy"><figcaption><span class="fr">Lettrage promotionnel</span><span class="en">Promo lettering</span></figcaption></figure>
+        <figure class="reveal"><img src="img/turbo.jpg" alt="" loading="lazy"><figcaption><span class="fr">Lettrage de véhicule</span><span class="en">Vehicle lettering</span></figcaption></figure>
       </div>
     </div>
   </section>
@@ -221,9 +242,9 @@
         <p><span class="fr">Un seul interlocuteur, du premier appel à la pose.</span><span class="en">One point of contact from the first call to installation.</span></p>
       </div>
       <div class="steps">
-        <div class="step"><div class="n">1</div><h3><span class="fr">Appelez ou passez nous voir</span><span class="en">Call or drop by</span></h3><p><span class="fr">Parlez-nous de votre projet, de vos dimensions et de votre budget.</span><span class="en">Tell us about your project, sizes and budget.</span></p></div>
-        <div class="step"><div class="n">2</div><h3><span class="fr">Approuvez l'épreuve</span><span class="en">Approve the proof</span></h3><p><span class="fr">On vous montre le design avant de produire quoi que ce soit.</span><span class="en">You see the design before anything gets made.</span></p></div>
-        <div class="step"><div class="n">3</div><h3><span class="fr">Production et pose</span><span class="en">Production and install</span></h3><p><span class="fr">Produit et installé avec soin. Prêt à être vu.</span><span class="en">Produced and installed with care. Ready to be seen.</span></p></div>
+        <div class="step reveal"><div class="n">1</div><h3><span class="fr">Appelez ou passez nous voir</span><span class="en">Call or drop by</span></h3><p><span class="fr">Parlez-nous de votre projet, de vos dimensions et de votre budget.</span><span class="en">Tell us about your project, sizes and budget.</span></p></div>
+        <div class="step reveal"><div class="n">2</div><h3><span class="fr">Approuvez l'épreuve</span><span class="en">Approve the proof</span></h3><p><span class="fr">On vous montre le design avant de produire quoi que ce soit.</span><span class="en">You see the design before anything gets made.</span></p></div>
+        <div class="step reveal"><div class="n">3</div><h3><span class="fr">Production et pose</span><span class="en">Production and install</span></h3><p><span class="fr">Produit et installé avec soin. Prêt à être vu.</span><span class="en">Produced and installed with care. Ready to be seen.</span></p></div>
       </div>
     </div>
   </section>
@@ -294,6 +315,9 @@
     body.classList.toggle('lang-fr',!toEn); body.classList.toggle('lang-en',toEn);
     document.documentElement.lang=toEn?'en':'fr';
   });
+
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*80+'ms';io.observe(el);});
 </script>
 </body>
 </html>
