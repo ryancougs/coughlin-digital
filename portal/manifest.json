@@ -1,0 +1,10 @@
+{
+  "name": "Coughlin Digital Demos",
+  "short_name": "CD Demos",
+  "start_url": "/portal/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f0e0d",
+  "theme_color": "#0f0e0d",
+  "icons": [{ "src": "/portal/icon.png", "sizes": "512x512", "type": "image/png" }]
+}

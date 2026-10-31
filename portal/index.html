@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Demo Portal · Coughlin Digital</title>
+<meta name="theme-color" content="#0f0e0d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CD Demos">
+<link rel="apple-touch-icon" href="/portal/icon.png">
+<link rel="icon" href="/portal/icon.png">
+<link rel="manifest" href="/portal/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0e0d;--fg:#f2f0ec;--card:#141312;--muted:#1c1b1a;--muted-fg:#9e9a93;
+  --ember:#c23b22;--ember-soft:#d4553a;--border:rgba(255,255,255,0.08);
+  --safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{min-height:100dvh;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.serif{font-family:"Instrument Serif",Georgia,serif;letter-spacing:-0.02em;font-weight:400}
+
+/* ---------- Lock screen ---------- */
+#lock{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:calc(2rem + var(--safe-t)) 1.5rem calc(2rem + var(--safe-b))}
+.brand{display:flex;align-items:center;gap:.5rem;margin-bottom:2.5rem}
+.brand-dot{width:10px;height:10px;border-radius:50%;background:var(--ember);box-shadow:0 0 18px var(--ember)}
+.brand span{font-family:"Instrument Serif",serif;font-size:1.35rem}
+#lock h1{font-size:2.2rem;margin-bottom:.4rem;text-align:center}
+#lock p{color:var(--muted-fg);font-size:.95rem;margin-bottom:2rem}
+.dots{display:flex;gap:1rem;margin-bottom:2.25rem;height:16px}
+.dots i{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--muted-fg);transition:all .15s}
+.dots i.on{background:var(--fg);border-color:var(--fg)}
+.dots.bad{animation:shake .4s}
+.dots.bad i{border-color:var(--ember);background:var(--ember)}
+@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+.pad{display:grid;grid-template-columns:repeat(3,76px);gap:14px 22px}
+.pad button{width:76px;height:76px;border-radius:50%;background:var(--muted);font-size:1.7rem;font-weight:500;transition:background .1s,transform .1s;user-select:none}
+.pad button:active{background:#2a2826;transform:scale(.95)}
+.pad .ghost{background:none;font-size:.9rem;color:var(--muted-fg)}
+
+/* ---------- Portal ---------- */
+#app{display:none;padding:calc(1.25rem + var(--safe-t)) 1.1rem calc(2.5rem + var(--safe-b));max-width:1100px;margin:0 auto}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+header .brand{margin:0}
+.who{font-size:.8rem;color:var(--muted-fg);display:flex;align-items:center;gap:.75rem}
+.who button{padding:.45rem .8rem;border:1px solid var(--border);border-radius:999px;font-size:.8rem;color:var(--fg)}
+.hello{font-size:2.3rem;line-height:1.05;margin-bottom:.35rem}
+.hello em{color:var(--ember-soft)}
+.sub{color:var(--muted-fg);font-size:.92rem;margin-bottom:1.25rem}
+.search{width:100%;padding:.85rem 1rem;border-radius:.75rem;background:var(--card);border:1px solid var(--border);color:var(--fg);font:inherit;font-size:1rem;margin-bottom:1.5rem;outline:none}
+.search:focus{border-color:var(--ember)}
+.folder{margin-bottom:2rem}
+.folder-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:.85rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.folder-h h2{font-size:1.5rem}
+.folder-h span{font-size:.75rem;color:var(--muted-fg);text-transform:uppercase;letter-spacing:.08em}
+.grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:1rem;overflow:hidden}
+.card a.open{display:block;position:relative;aspect-ratio:16/9;background:var(--muted)}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card a.open::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.75))}
+.card .tag{position:absolute;left:.8rem;bottom:.7rem;z-index:1;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#fff;opacity:.9}
+.card .body{padding:.9rem 1rem 1rem}
+.card h3{font-size:1.3rem;line-height:1.15;margin-bottom:.15rem}
+.card .meta{font-size:.82rem;color:var(--muted-fg);margin-bottom:.85rem}
+.actions{display:flex;gap:.5rem}
+.actions a,.actions button{flex:1;text-align:center;padding:.65rem .5rem;border-radius:.6rem;font-size:.85rem;font-weight:500;text-decoration:none;color:var(--fg);background:var(--muted)}
+.actions .primary{background:var(--ember);color:#fff8f5}
+.empty{padding:1.5rem;border:1px dashed var(--border);border-radius:1rem;color:var(--muted-fg);font-size:.9rem;text-align:center}
+
+/* ---------- QR sheet ---------- */
+#sheet{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:10;padding:1.5rem}
+#sheet.show{display:flex}
+.sheet-in{background:#fff;color:#111;border-radius:1.25rem;padding:1.5rem;text-align:center;max-width:340px;width:100%}
+.sheet-in img{width:100%;height:auto;image-rendering:pixelated;display:block;margin-bottom:.75rem}
+.sheet-in h4{font-family:"Instrument Serif",serif;font-size:1.5rem;font-weight:400}
+.sheet-in p{font-size:.8rem;color:#666;margin-top:.25rem}
+.toast{position:fixed;left:50%;bottom:calc(1.5rem + var(--safe-b));transform:translate(-50%,20px);background:var(--fg);color:var(--bg);padding:.65rem 1.1rem;border-radius:999px;font-size:.85rem;font-weight:500;opacity:0;transition:all .25s;pointer-events:none;z-index:20}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<section id="lock">
+  <div class="brand"><div class="brand-dot"></div><span>Coughlin Digital</span></div>
+  <h1 class="serif">Demo Portal</h1>
+  <p>Enter your PIN</p>
+  <div class="dots" id="dots"><i></i><i></i><i></i><i></i></div>
+  <div class="pad" id="pad"></div>
+</section>
+
+<main id="app">
+  <header>
+    <div class="brand"><div class="brand-dot"></div><span>Coughlin Digital</span></div>
+    <div class="who"><button id="logout">Lock</button></div>
+  </header>
+  <h1 class="hello serif" id="hello"></h1>
+  <p class="sub" id="sub"></p>
+  <input class="search" id="search" type="search" placeholder="Search demos" autocomplete="off">
+  <div id="folders"></div>
+</main>
+
+<div id="sheet"><div class="sheet-in"><img id="qr" alt="QR code"><h4 id="qrName"></h4><p>Scan to open on your phone</p></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =====================================================================
+   CONFIG: edit this section to add demos, folders and people.
+   ---------------------------------------------------------------------
+   FOLDERS: one per rep or territory. Each demo lists the folder it's in.
+   USERS:   pin hash -> who they are and which folders they can see.
+            "*" means every folder.
+   To make a PIN hash, run in a terminal:
+     python3 -c "import hashlib;print(hashlib.sha256(b'cd-portal:1234').hexdigest())"
+   (replace 1234 with the new PIN, must be 4 digits)
+   This is a convenience lock, not real security.
+   ===================================================================== */
+const FOLDERS = {
+  "west-island": { name: "West Island", owner: "Ryan" },
+  "downtown":    { name: "Downtown",    owner: "Partner" }
+};
+
+const USERS = {
+  "7f72066ba0a04fadff05b91e2cb23efbc3f919066223b5c1dee94ed91604b81a": { name: "Ryan",    folders: ["*"] },
+  "311ef8020270ad0bba9408168752905e3a41f35b3a74e2da17d58b5c1202979a": { name: "Partner", folders: ["downtown"] }
+};
+
+const DEMOS = [
+  { slug: "garage-fredmir",       name: "Garage Fredmir",       type: "Auto repair",        area: "Pierrefonds",          folder: "west-island" },
+  { slug: "gm-appliance",         name: "GM Appliance",         type: "Appliance repair",   area: "West Island",          folder: "west-island" },
+  { slug: "dany-grafix",          name: "Dany Grafix",          type: "Signs and lettering",area: "Dollard-des-Ormeaux",  folder: "west-island", thumb: "dany-grafix", noQr: true },
+  { slug: "rembourrage-demizio",  name: "Rembourrage Demizio",  type: "Upholstery",         area: "Dollard-des-Ormeaux",  folder: "west-island" },
+  { slug: "patisserie-parfait",   name: "Pâtisserie Parfait",   type: "Bakery",             area: "Pierrefonds",          folder: "west-island" },
+  { slug: "patisserie-marian",    name: "Pâtisserie Marian",    type: "Egyptian pastry",    area: "Pierrefonds",          folder: "west-island" },
+  { slug: "patisserie-halwanji",  name: "Halwanji",             type: "Kitchen and pastry", area: "Roxboro",              folder: "west-island" }
+];
+/* ===================== end of config ===================== */
+
+const KEY = "cd-portal-user";
+const $ = id => document.getElementById(id);
+let pin = "", user = null;
+
+async function hash(s){
+  const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("cd-portal:" + s));
+  return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2,"0")).join("");
+}
+
+/* keypad */
+const keys = ["1","2","3","4","5","6","7","8","9","","0","del"];
+keys.forEach(k => {
+  const b = document.createElement("button");
+  if (k === "") { b.className = "ghost"; b.disabled = true; }
+  else if (k === "del") { b.className = "ghost"; b.textContent = "Delete"; b.onclick = () => { pin = pin.slice(0,-1); paint(); }; }
+  else { b.textContent = k; b.onclick = () => press(k); }
+  $("pad").appendChild(b);
+});
+document.addEventListener("keydown", e => {
+  if ($("lock").style.display === "none") return;
+  if (/^\d$/.test(e.key)) press(e.key);
+  if (e.key === "Backspace") { pin = pin.slice(0,-1); paint(); }
+});
+function paint(){ [...$("dots").children].forEach((d,i) => d.classList.toggle("on", i < pin.length)); }
+async function press(k){
+  if (pin.length >= 4) return;
+  pin += k; paint();
+  if (pin.length === 4) {
+    const h = await hash(pin);
+    if (USERS[h]) { try { localStorage.setItem(KEY, h); } catch(e){} enter(h); }
+    else { $("dots").classList.add("bad"); if (navigator.vibrate) navigator.vibrate(120);
+      setTimeout(() => { $("dots").classList.remove("bad"); pin = ""; paint(); }, 450); }
+  }
+}
+
+function enter(h){
+  user = USERS[h];
+  $("lock").style.display = "none";
+  $("app").style.display = "block";
+  render();
+}
+
+function visibleFolders(){
+  return user.folders.includes("*") ? Object.keys(FOLDERS) : user.folders.filter(f => FOLDERS[f]);
+}
+
+function render(){
+  const q = $("search").value.trim().toLowerCase();
+  const fs = visibleFolders();
+  const all = DEMOS.filter(d => fs.includes(d.folder));
+  $("hello").innerHTML = `Hey <em>${esc(user.name)}</em>.`;
+  $("sub").textContent = `${all.length} demo${all.length === 1 ? "" : "s"} ready to show.`;
+  $("folders").innerHTML = fs.map(f => {
+    const list = all.filter(d => d.folder === f && (!q || (d.name + " " + d.type + " " + d.area).toLowerCase().includes(q)));
+    if (q && !list.length) return "";
+    return `<section class="folder">
+      <div class="folder-h"><h2 class="serif">${esc(FOLDERS[f].name)}</h2><span>${list.length} site${list.length === 1 ? "" : "s"}</span></div>
+      ${list.length ? `<div class="grid">${list.map(card).join("")}</div>` : `<div class="empty">No demos in this folder yet.</div>`}
+    </section>`;
+  }).join("") || `<div class="empty">No matches.</div>`;
+}
+
+function card(d){
+  const url = `/demo/${d.slug}/`;
+  return `<article class="card">
+    <a class="open" href="${url}"><img loading="lazy" src="/portal/thumbs/${d.thumb || d.slug}.jpg" alt=""><span class="tag">${esc(d.type)}</span></a>
+    <div class="body">
+      <h3 class="serif">${esc(d.name)}</h3>
+      <div class="meta">${esc(d.area)}</div>
+      <div class="actions">
+        <a class="primary" href="${url}">Open</a>
+        ${d.noQr ? "" : `<button data-qr="${d.slug}" data-name="${esc(d.name)}">QR</button>`}
+        <button data-share="${d.slug}" data-name="${esc(d.name)}">Send link</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function toast(t){ const el = $("toast"); el.textContent = t; el.classList.add("show"); setTimeout(() => el.classList.remove("show"), 1800); }
+
+$("folders").addEventListener("click", async e => {
+  const q = e.target.closest("[data-qr]"), s = e.target.closest("[data-share]");
+  if (q) { $("qr").src = `/demo/${q.dataset.qr}/qr.png`; $("qrName").textContent = q.dataset.name; $("sheet").classList.add("show"); }
+  if (s) {
+    const url = `${location.origin}/demo/${s.dataset.share}/`;
+    if (navigator.share) { try { await navigator.share({ title: s.dataset.name, url }); } catch(err){} }
+    else { try { await navigator.clipboard.writeText(url); toast("Link copied"); } catch(err){ prompt("Copy this link:", url); } }
+  }
+});
+$("sheet").onclick = () => $("sheet").classList.remove("show");
+$("search").oninput = render;
+$("logout").onclick = () => { try { localStorage.removeItem(KEY); } catch(e){} location.reload(); };
+
+/* stay signed in on this device */
+try { const saved = localStorage.getItem(KEY); if (saved && USERS[saved]) enter(saved); } catch(e){}
+</script>
+</body>
+</html>
